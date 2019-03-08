@@ -1,0 +1,17 @@
+<div class="container">
+    <nav class="navbar">
+      <input class="form-control" placeholder="search" type="text" name="search" [(ngModel)]="filter">
+    </nav>
+  <div class="row">
+    <div class="col-md-12" style="margin-top: 20px; margin-bottom:20px; ">
+      <div *ngFor="let post of posts | filter:filter  | paginate: { itemsPerPage: 10, currentPage: p }" class="alert alert-success">
+        <h4 class="alert-heading">{{post.title}}</h4>
+        <p>{{post.body}}</p>
+      </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <div class="alert alert-primary" role="alert">
+        {{error}}
+      </div>
+    </div>
+  </div>
+</div>
